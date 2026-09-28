@@ -1,0 +1,87 @@
+DROP DATABASE IF EXISTS BIBLIO;
+CREATE DATABASE BIBLIO;
+USE BIBLIO;
+
+-- ------------------------------------------------------
+--  DDL for Table LECTOR
+-- ------------------------------------------------------
+  CREATE TABLE LECTOR 
+   (NUMLECTOR DECIMAL(6,0) PRIMARY KEY, 
+	NOMLECTOR VARCHAR(30), 
+	TIPOLECTOR DECIMAL(6,0)
+   );
+
+-- ------------------------------------------------------
+--  DDL for Table LIBRO
+-- ------------------------------------------------------
+CREATE TABLE LIBRO 
+   (	 CODLIBRO  DECIMAL(6,0) PRIMARY KEY, 
+	 TITULO  VARCHAR(30), 
+	 NUMPAG  DECIMAL(4,0), 
+	 EDITORIAL  VARCHAR(20), 
+	 AUTOR  VARCHAR(30)
+   ) ;
+
+-- ------------------------------------------------------
+--  DDL for Table PRESTAMO
+-- ------------------------------------------------------
+
+CREATE TABLE  PRESTAMO  
+   (	 CODLIBRO  DECIMAL(6,0) , 
+	 NUMLECTOR  DECIMAL(6,0) , 
+	 FPRESTA  DATE,
+	 DIAS  DECIMAL(3,0),
+	CONSTRAINT prestamo_pk PRIMARY KEY (CODLIBRO, NUMLECTOR, FPRESTA),
+	 CONSTRAINT codlibrop_fk FOREIGN KEY (CODLIBRO) REFERENCES  LIBRO(CODLIBRO),
+	 CONSTRAINT numlectorp_fk FOREIGN KEY (NUMLECTOR) REFERENCES LECTOR(NUMLECTOR)
+   ) ;
+
+-- ------------------------------------------------------
+--  DDL for Table DEVOLUCION
+-- ------------------------------------------------------
+
+CREATE TABLE  DEVOLUCION  
+   (CODLIBRO  DECIMAL(6,0) NOT NULL,  
+	 NUMLECTOR  DECIMAL(6,0) NOT NULL,  
+	 FPRESTA  DATE NOT NULL, 
+	 FDEVOL  DATE NOT NULL,
+	CONSTRAINT devol_pk PRIMARY KEY (CODLIBRO, NUMLECTOR, FPRESTA, FDEVOL),
+	CONSTRAINT codlibrod_fk FOREIGN KEY (CODLIBRO) REFERENCES LIBRO(CODLIBRO),
+	CONSTRAINT numlectord_fk FOREIGN KEY (NUMLECTOR) REFERENCES LECTOR(NUMLECTOR)
+   ) ;
+
+Insert into LECTOR (NUMLECTOR,NOMLECTOR,TIPOLECTOR) values ('8','Ana Blanco','4');
+Insert into LECTOR (NUMLECTOR,NOMLECTOR,TIPOLECTOR) values ('1','Posadas Gil, Inés','3');
+Insert into LECTOR (NUMLECTOR,NOMLECTOR,TIPOLECTOR) values ('2','Sánchez Pons, José','3');
+Insert into LECTOR (NUMLECTOR,NOMLECTOR,TIPOLECTOR) values ('3','Gómez Sáez, Miguel','3');
+Insert into LECTOR (NUMLECTOR,NOMLECTOR,TIPOLECTOR) values ('10','Santana Páez, Eva','4');
+Insert into LECTOR (NUMLECTOR,NOMLECTOR,TIPOLECTOR) values ('11','Betancor Díaz, Yolanda','4');
+Insert into LECTOR (NUMLECTOR,NOMLECTOR,TIPOLECTOR) values ('20','Blasco Ulla, Juan Luis','1');
+Insert into LECTOR (NUMLECTOR,NOMLECTOR,TIPOLECTOR) values ('22','Marín Gómez, Ana','1');
+Insert into LECTOR (NUMLECTOR,NOMLECTOR,TIPOLECTOR) values ('30','Plaza Ortiz, Juan','8');
+
+Insert into LIBRO (CODLIBRO,TITULO,NUMPAG,EDITORIAL,AUTOR) values ('12','Don Quijote I','517','Anaya','Cervantes');
+Insert into LIBRO (CODLIBRO,TITULO,NUMPAG,EDITORIAL,AUTOR) values ('13','Don Quijote II','611','Anaya','Cervantes');
+Insert into LIBRO (CODLIBRO,TITULO,NUMPAG,EDITORIAL,AUTOR) values ('20','El principito','120','Andina','Saint_Exupery');
+Insert into LIBRO (CODLIBRO,TITULO,NUMPAG,EDITORIAL,AUTOR) values ('35','Fortunata y Jacinta','625','PlazaJanes','Pérez-Galdós');
+Insert into LIBRO (CODLIBRO,TITULO,NUMPAG,EDITORIAL,AUTOR) values ('40','Caperucita en Manhattan','310','Salamandra','Martí¬n Gaite');
+Insert into LIBRO (CODLIBRO,TITULO,NUMPAG,EDITORIAL,AUTOR) values ('41','La piel del tambor','280','Circulo','Pérez-Reverte');
+Insert into LIBRO (CODLIBRO,TITULO,NUMPAG,EDITORIAL,AUTOR) values ('42','Afrodita','421','Espasa','Isabel Allende');
+Insert into LIBRO (CODLIBRO,TITULO,NUMPAG,EDITORIAL,AUTOR) values ('50','Viajar','675','BBVA',null);
+Insert into LIBRO (CODLIBRO,TITULO,NUMPAG,EDITORIAL,AUTOR) values ('51','España en sus caminos','534','BBVA',null);
+Insert into LIBRO (CODLIBRO,TITULO,NUMPAG,EDITORIAL,AUTOR) values ('52','Aerogua del litoral','340','Planeta',null);
+Insert into LIBRO (CODLIBRO,TITULO,NUMPAG,EDITORIAL,AUTOR) values ('65','Don Quijote I','578','Planeta','Cervantes');
+Insert into LIBRO (CODLIBRO,TITULO,NUMPAG,EDITORIAL,AUTOR) values ('66','Don Quijote II','600','Planeta','Cervantes');
+
+Insert into PRESTAMO (CODLIBRO,NUMLECTOR,FPRESTA) values ('12','20',str_to_date('21/02/19','%d/%m/%y'));
+Insert into PRESTAMO (CODLIBRO,NUMLECTOR,FPRESTA) values ('20','11',str_to_date('12/03/19','%d/%m/%y'));
+Insert into PRESTAMO (CODLIBRO,NUMLECTOR,FPRESTA) values ('35','1',str_to_date('24/01/19','%d/%m/%y'));
+Insert into PRESTAMO (CODLIBRO,NUMLECTOR,FPRESTA) values ('40','3',str_to_date('11/08/18','%d/%m/%y'));
+Insert into PRESTAMO (CODLIBRO,NUMLECTOR,FPRESTA) values ('41','22',str_to_date('04/03/19','%d/%m/%y'));
+Insert into PRESTAMO (CODLIBRO,NUMLECTOR,FPRESTA) values ('51','20',str_to_date('14/03/19','%d/%m/%y'));
+Insert into PRESTAMO (CODLIBRO,NUMLECTOR,FPRESTA) values ('52','22',str_to_date('14/03/19','%d/%m/%y'));
+
+Insert into DEVOLUCION (CODLIBRO,NUMLECTOR,FPRESTA,FDEVOL) values ('13','11',str_to_date('18/02/19','%d/%m/%y'),str_to_date('28/02/19','%d/%m/%y'));
+Insert into DEVOLUCION (CODLIBRO,NUMLECTOR,FPRESTA,FDEVOL) values ('42','30',str_to_date('13/02/19','%d/%m/%y'),str_to_date('21/02/19','%d/%m/%y'));
+Insert into DEVOLUCION (CODLIBRO,NUMLECTOR,FPRESTA,FDEVOL) values ('50','20',str_to_date('14/11/18','%d/%m/%y'),str_to_date('18/01/19','%d/%m/%y'));
+Insert into DEVOLUCION (CODLIBRO,NUMLECTOR,FPRESTA,FDEVOL) values ('42','20',str_to_date('01/12/18','%d/%m/%y'),str_to_date('15/12/18','%d/%m/%y'));

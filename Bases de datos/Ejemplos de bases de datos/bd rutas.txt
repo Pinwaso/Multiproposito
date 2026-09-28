@@ -1,0 +1,149 @@
+DROP DATABASE IF EXISTS bd_rutas;
+
+CREATE OR REPLACE DATABASE bd_rutas CHARACTER SET UTF8MB4 COLLATE 'utf8mb4_spanish_ci';
+
+USE bd_rutas;
+
+CREATE OR REPLACE TABLE persona(
+	cod INT,
+	nombre VARCHAR(20),
+	apellido1 VARCHAR(20),
+	apellido2 VARCHAR(20),
+	email VARCHAR(30),
+	CONSTRAINT per_cod_pk PRIMARY KEY(cod)
+);
+
+CREATE OR REPLACE TABLE comentario(
+	cod_comentario INT,
+	cod_persona INT,
+	CONSTRAINT com_cod_pk PRIMARY KEY(cod_comentario,cod_persona),
+	CONSTRAINT com_cod_fk FOREIGN KEY(cod_persona) REFERENCES persona(cod) ON DELETE CASCADE 
+);
+
+CREATE OR REPLACE TABLE localidad(
+	nombre VARCHAR(20),
+	rio VARCHAR(20),
+	CONSTRAINT loc_nri_pk PRIMARY KEY(nombre,rio)
+);
+
+CREATE OR REPLACE TABLE ruta(
+	nombre VARCHAR(50),
+	descripcion VARCHAR(70),
+	distancia DOUBLE,
+	circular BOOLEAN, 
+	tipo_ruta ENUM('P', 'B', 'C'),
+	nom_loc_ini VARCHAR(20),
+	rio_loc_ini VARCHAR(20),
+	nom_loc_fin VARCHAR(20),
+	rio_loc_fin VARCHAR(20),
+	CONSTRAINT rut_nom_pk PRIMARY KEY(nombre),
+	CONSTRAINT rut_nr1_fk FOREIGN KEY(nom_loc_ini,rio_loc_ini) REFERENCES localidad(nombre,rio) ON DELETE CASCADE,
+	CONSTRAINT rut_nr2_fk FOREIGN KEY(nom_loc_fin,rio_loc_fin) REFERENCES localidad(nombre,rio) ON DELETE CASCADE
+);
+
+
+CREATE OR REPLACE TABLE ruta_localidad(
+	nombre_localidad VARCHAR(20),
+	nombre_ruta VARCHAR(50),
+	CONSTRAINT rlo_nom_pk PRIMARY KEY(nombre_localidad,nombre_ruta),
+	CONSTRAINT rlo_loc_fk FOREIGN KEY(nombre_localidad) REFERENCES localidad(nombre) ON DELETE CASCADE,
+	CONSTRAINT rlo_rut_fk FOREIGN KEY(nombre_ruta) REFERENCES ruta(nombre) ON DELETE CASCADE
+);
+
+CREATE OR REPLACE TABLE ruta_persona(
+	nombre_ruta VARCHAR(50),
+	cod_persona INT,
+	CONSTRAINT rpe_nco_pk PRIMARY KEY(nombre_ruta,cod_persona),
+	CONSTRAINT rpe_nom_fk FOREIGN KEY(nombre_ruta) REFERENCES ruta(nombre) ON DELETE CASCADE,
+	CONSTRAINT rpe_cod_fk FOREIGN KEY(cod_persona) REFERENCES persona(cod) ON DELETE CASCADE
+);
+
+CREATE OR REPLACE TABLE a_pie(
+	nombre_ruta VARCHAR(50),
+	altitud DOUBLE,
+	dificultad ENUM('Básico','Medio','Alto','Muy alto'),
+	CONSTRAINT api_nom_fk FOREIGN KEY(nombre_ruta) REFERENCES ruta(nombre) ON DELETE CASCADE,
+	CONSTRAINT api_nom_pk PRIMARY KEY(nombre_ruta)
+);
+
+CREATE OR REPLACE TABLE bicicleta(
+	nombre_ruta VARCHAR(20),
+	altitud DOUBLE,
+	dificultad ENUM('Básico','Medio','Alto','Muy alto'),
+	CONSTRAINT bic_nom_fk FOREIGN KEY(nombre_ruta) REFERENCES ruta(nombre) ON DELETE CASCADE,
+	CONSTRAINT bic_nom_pk PRIMARY KEY(nombre_ruta)
+);
+
+CREATE OR REPLACE TABLE coche(
+	nombre_ruta VARCHAR(50),
+	costo_gasolina DOUBLE,
+	litros_consumidos DOUBLE,
+	emision_gasolina DOUBLE,
+	CONSTRAINT coc_nom_fk FOREIGN KEY(nombre_ruta) REFERENCES ruta(nombre) ON DELETE CASCADE,
+	CONSTRAINT coc_nom_pk PRIMARY KEY(nombre_ruta)
+);
+
+-- Tabla Persona
+
+INSERT INTO persona VALUES(1, 'Pepe', 'Gómez', 'Pérez', 'pepe@gmail.com');
+INSERT INTO persona VALUES(2, 'Maria', 'García', 'Casa', 'maria@gmail.com');
+INSERT INTO persona VALUES(3, 'Eva', 'Fonseca', 'Marin', 'evafon@gmail.com');
+INSERT INTO persona VALUES(4, 'Alfonso', 'Pérez', 'Gil', 'alfonsogil@gmail.com');
+INSERT INTO persona VALUES(5, 'David', 'Vela', 'Rico', 'davidvela@gmail.com');
+
+
+-- Tabla comentario
+
+INSERT INTO comentario VALUES(1, 1);
+INSERT INTO comentario VALUES(2, 2);
+INSERT INTO comentario VALUES(3, 3);
+INSERT INTO comentario VALUES(4, 4);
+INSERT INTO comentario VALUES(5, 5);
+INSERT INTO comentario VALUES(6, 2);
+INSERT INTO comentario VALUES(7, 4);
+
+-- Tabla Localidad
+
+INSERT INTO localidad VALUES('El Cortijo', 'Río Ebro');
+INSERT INTO localidad VALUES('Matute', 'Río Tobía');
+INSERT INTO localidad VALUES('Logroño', 'Pantano La Grajera');
+INSERT INTO localidad VALUES('Villamedia', 'Río Iregua');
+INSERT INTO localidad VALUES('Villoslada Cameros', 'Río Puente Ra');
+
+-- Tabla ruta 
+
+INSERT INTO ruta VALUES('Ruta Verde', 'Paseo al rededor de un meandro del Rio Ebro a la altura del Cortijo', 7.9, TRUE, 'C', 'El Cortijo', 'Río Ebro', 'El Cortijo', 'Río Ebro');
+INSERT INTO ruta VALUES('Nacimiento de afluente', 'Paseo sigueindo el afluente hasta su nacimiento', 6.2 , TRUE, 'P', 'Matute', 'Río Tobía', 'Matute', 'Río Tobía' );
+INSERT INTO ruta VALUES('Vuelta al pantano', 'Es un recorrido en circulo dando la vuelta al pantano de la Grajera', 4.01, TRUE, 'B', 'Logroño', 'Pantano La Grajera', 'Logroño', 'Pantano La Grajera');
+INSERT INTO ruta VALUES('Desembocadura del Iregua', 'Paseo hasta la desembocadura en el rio Ebro', 8.4, TRUE, 'P', 'Villamedia', 'Río Iregua', 'Villamedia', 'Río Iregua');
+INSERT INTO ruta VALUES('Cascadas de Puente Ra', 'Ruta de senderismo para apreciar el paisaje de Sierra Cebollera', 6.6, TRUE, 'P', 'Villoslada Cameros', 'Río Puente Ra', 'Villoslada Cameros', 'Río Puente Ra');
+
+
+-- Tabla ruta_localidad
+
+INSERT INTO ruta_localidad VALUES('El Cortijo', 'Ruta Verde');
+INSERT INTO ruta_localidad VALUES('Matute', 'Nacimiento de afluente');
+INSERT INTO ruta_localidad VALUES('Logroño', 'Vuelta al pantano');
+INSERT INTO ruta_localidad VALUES('Villamedia', 'Desembocadura del Iregua');
+INSERT INTO ruta_localidad VALUES('Villoslada Cameros', 'Cascadas de Puente Ra');
+
+-- Tabla Ruta_persona
+
+INSERT INTO ruta_persona VALUES('Nacimiento de afluente', 1);
+INSERT INTO ruta_persona VALUES('Vuelta al pantano', 5);
+INSERT INTO ruta_persona VALUES('Desembocadura del Iregua', 4);
+INSERT INTO ruta_persona VALUES('Cascadas de Puente Ra', 5);
+
+-- Tabla a_pie
+
+INSERT INTO a_pie VALUES('Nacimiento de afluente', 732, 'Medio');
+INSERT INTO a_pie VALUES('Desembocadura del Iregua', 372, 'Básico');
+INSERT INTO a_pie VALUES('Cascadas de Puente Ra', 265, 'Alto');
+
+-- Tabla bicicleta
+
+INSERT INTO bicicleta VALUES('Vuelta al pantano', 372, 'Básico');
+
+-- Tabla coche
+
+INSERT INTO coche VALUES('Ruta Verde', 1.793, 15, 2.35);
