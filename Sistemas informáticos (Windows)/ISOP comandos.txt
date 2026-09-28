@@ -1,0 +1,53 @@
+----------------------------------------------------------------------------------------------
+DISKPART (se ejecuta en cmd para entrar a la administración de discos)
+
+list [disk, volume, partition] (listar discos, volumenes y particiones)
+
+select [disk, volume, partition] [numero] (seleccionar disco, volumen o partición)
+
+create partition [primary, logical] size=[numero] (crea una particion en un disco seleccionado)
+
+delete partition (elimina la particion seleccionada)
+
+clean (elimina todas las particiones de un disco seleccionado)
+
+convert [mbr, gpt, dynamic, basic] (convertir el disco)
+
+extend size=[número] (extiende la particion de un disco seleccionado)
+
+assign letter=[letra] (le da una letra a una particion seleccionada)
+
+assign mount=[ruta absoluta] (monta un volumen o particion a una carpeta)
+
+format fs=[formato] label "[cadena]" (asigna fomrato y label a una particion seleccionada)
+
+RAID
+
+create volume [stripe, mirror] size=[numero] disk=0,1 (crea volumen)
+volumen reflejado (mirror, 1)
+volumen seleccionado (striped, 0, mejora el acceso de datos)
+volumen distribuido (agrupa varios discos donde se llena los datos en orden)
+-------------------------------------------------------------------------------------------------------
+directiva de seguridad local
+
+lusrmgr.msc (entrar a usuarios y grupos locales)
+
+net user (listar todos los usuarios)
+
+net user [nombre de usuario] (mostrar información del usuario)
+
+net user [nombre de usuario] [contraseña de usuario] /add (crear usuario, con usuario existente se puede cambiar la contraseña) 
+
+net user [nombre de usuario] /delete (borrar usuario) 
+
+net user [usuario] /comment:"[descripción]" (añadir descripción)
+
+net user [usuario] /active:[no, yes] (activar o desactivar el usuario)
+
+wmic useraccount where name="[usuario]" rename [nuevo nombre usuario] (renombra ususario)
+
+net [group, localgroup] [nombre del grupo] /[add, delete] (crear, eliminar grupo)
+
+net group [grupo] (lista todos los grupos o el nombre seleccionado)
+
+net group [nombre grupo] [nombre usuario] /[add, delete] (añade o elimina usuarios al grupo) 
