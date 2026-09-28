@@ -1,0 +1,4 @@
+En caso que la máquina metasplotable se quede con la ip anterior en lan 
+segment, se debe estar coenctada a la configuración de red NAT y dentro 
+de la máquina ejecutar dhcliente -r y dhclient eth0 (o la interfaz NAT). 
+Este comando lo que hace es forzar la renovación de configuración DHCP.
