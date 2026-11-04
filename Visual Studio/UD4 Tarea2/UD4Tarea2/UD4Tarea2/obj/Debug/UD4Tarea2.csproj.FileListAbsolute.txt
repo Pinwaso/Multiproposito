@@ -1,0 +1,7 @@
+I:\DAM\Visual Studio\UD4 Tarea2\UD4Tarea2\UD4Tarea2\bin\Debug\UD4Tarea2.exe.config
+I:\DAM\Visual Studio\UD4 Tarea2\UD4Tarea2\UD4Tarea2\bin\Debug\UD4Tarea2.exe
+I:\DAM\Visual Studio\UD4 Tarea2\UD4Tarea2\UD4Tarea2\bin\Debug\UD4Tarea2.pdb
+I:\DAM\Visual Studio\UD4 Tarea2\UD4Tarea2\UD4Tarea2\obj\Debug\UD4Tarea2.csproj.AssemblyReference.cache
+I:\DAM\Visual Studio\UD4 Tarea2\UD4Tarea2\UD4Tarea2\obj\Debug\UD4Tarea2.csproj.CoreCompileInputs.cache
+I:\DAM\Visual Studio\UD4 Tarea2\UD4Tarea2\UD4Tarea2\obj\Debug\UD4Tarea2.exe
+I:\DAM\Visual Studio\UD4 Tarea2\UD4Tarea2\UD4Tarea2\obj\Debug\UD4Tarea2.pdb
