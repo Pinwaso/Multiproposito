@@ -1,0 +1,10 @@
+I:\DAM\Visual Studio\UD5Tarea12\UD5Tarea12\UD5Tarea12\bin\Debug\UD5Tarea12.exe.config
+I:\DAM\Visual Studio\UD5Tarea12\UD5Tarea12\UD5Tarea12\bin\Debug\UD5Tarea12.exe
+I:\DAM\Visual Studio\UD5Tarea12\UD5Tarea12\UD5Tarea12\bin\Debug\UD5Tarea12.pdb
+I:\DAM\Visual Studio\UD5Tarea12\UD5Tarea12\UD5Tarea12\obj\Debug\UD5Tarea12.csproj.AssemblyReference.cache
+I:\DAM\Visual Studio\UD5Tarea12\UD5Tarea12\UD5Tarea12\obj\Debug\UD5Tarea12.Form1.resources
+I:\DAM\Visual Studio\UD5Tarea12\UD5Tarea12\UD5Tarea12\obj\Debug\UD5Tarea12.Properties.Resources.resources
+I:\DAM\Visual Studio\UD5Tarea12\UD5Tarea12\UD5Tarea12\obj\Debug\UD5Tarea12.csproj.GenerateResource.cache
+I:\DAM\Visual Studio\UD5Tarea12\UD5Tarea12\UD5Tarea12\obj\Debug\UD5Tarea12.csproj.CoreCompileInputs.cache
+I:\DAM\Visual Studio\UD5Tarea12\UD5Tarea12\UD5Tarea12\obj\Debug\UD5Tarea12.exe
+I:\DAM\Visual Studio\UD5Tarea12\UD5Tarea12\UD5Tarea12\obj\Debug\UD5Tarea12.pdb
