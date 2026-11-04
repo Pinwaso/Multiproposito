@@ -1,0 +1,7 @@
+I:\DAM\Visual Studio\ConsolaHola\ConsolaHola\ConsolaHola\bin\Debug\ConsolaHola.exe.config
+I:\DAM\Visual Studio\ConsolaHola\ConsolaHola\ConsolaHola\bin\Debug\ConsolaHola.exe
+I:\DAM\Visual Studio\ConsolaHola\ConsolaHola\ConsolaHola\bin\Debug\ConsolaHola.pdb
+I:\DAM\Visual Studio\ConsolaHola\ConsolaHola\ConsolaHola\obj\Debug\ConsolaHola.csproj.AssemblyReference.cache
+I:\DAM\Visual Studio\ConsolaHola\ConsolaHola\ConsolaHola\obj\Debug\ConsolaHola.csproj.CoreCompileInputs.cache
+I:\DAM\Visual Studio\ConsolaHola\ConsolaHola\ConsolaHola\obj\Debug\ConsolaHola.exe
+I:\DAM\Visual Studio\ConsolaHola\ConsolaHola\ConsolaHola\obj\Debug\ConsolaHola.pdb
