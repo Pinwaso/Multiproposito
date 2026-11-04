@@ -1,0 +1,7 @@
+I:\DAM\Visual Studio\UD5Tarea5\UD5Tarea5\UD5Tarea5\bin\Debug\UD5Tarea5.exe.config
+I:\DAM\Visual Studio\UD5Tarea5\UD5Tarea5\UD5Tarea5\bin\Debug\UD5Tarea5.exe
+I:\DAM\Visual Studio\UD5Tarea5\UD5Tarea5\UD5Tarea5\bin\Debug\UD5Tarea5.pdb
+I:\DAM\Visual Studio\UD5Tarea5\UD5Tarea5\UD5Tarea5\obj\Debug\UD5Tarea5.csproj.AssemblyReference.cache
+I:\DAM\Visual Studio\UD5Tarea5\UD5Tarea5\UD5Tarea5\obj\Debug\UD5Tarea5.csproj.CoreCompileInputs.cache
+I:\DAM\Visual Studio\UD5Tarea5\UD5Tarea5\UD5Tarea5\obj\Debug\UD5Tarea5.exe
+I:\DAM\Visual Studio\UD5Tarea5\UD5Tarea5\UD5Tarea5\obj\Debug\UD5Tarea5.pdb
